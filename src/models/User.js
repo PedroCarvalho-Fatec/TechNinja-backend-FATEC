@@ -11,6 +11,8 @@ const userSchema = new mongoose.Schema(
     pontuacao: { type: String, default: "" },
     nivelmodulo: { type: String, default: "" },
     ranking: { type: String, default: "" },
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
   },
   { collection: "Usuarios" }
 );
