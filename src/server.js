@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import quizRoutes from "./routes/quizRoutes.js";
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ connectDB();
 
 // Rotas
 app.use("/api", authRoutes);
+app.use("/api", quizRoutes);
 app.use("/api/users", userRoutes);
 
 // Inicializar o servidor
