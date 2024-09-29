@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
-const registerUser = async (nome, email, senha) => {
+export const registerUser = async (nome, email, senha) => {
   const userExists = await User.findOne({ email });
   if (userExists) {
     throw new Error("Usuário já existe");
@@ -19,7 +19,7 @@ const registerUser = async (nome, email, senha) => {
   return newUser;
 };
 
-const loginUser = async (email, senha) => {
+export const loginUser = async (email, senha) => {
   const user = await User.findOne({ email });
   if (!user) {
     throw new Error("Usuário não encontrado");
@@ -35,5 +35,3 @@ const loginUser = async (email, senha) => {
   });
   return token;
 };
-
-export { registerUser, loginUser };

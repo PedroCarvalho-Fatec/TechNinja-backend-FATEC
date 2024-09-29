@@ -1,8 +1,8 @@
-const express = require('express');
-const {requestPasswordReset} = require('../controllers/userController')
+import express from "express";
+import requestPasswordReset from "../controllers/userController.js";
 
 const router = express.Router();
 
-router.post('/request-password-reset', requestPasswordReset);
+router.post("/request-password-reset", requestPasswordReset);
 
-module.exports = router;
+export default router;

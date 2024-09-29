@@ -1,7 +1,7 @@
 //services/emailService.js
 
-const { text } = require('express');
-const nodemailer = require('nodemailer');
+import { text } from 'express';
+import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',  //Pode adicionar outros serviços de emial
@@ -23,4 +23,4 @@ const sendPasswordResetEmail = (email, token) => {
     return transporter.sendMail(mailOptions);
 }
 
-module.exports = {sendPasswordResetEmail};
+export default sendPasswordResetEmail

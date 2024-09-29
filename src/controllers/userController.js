@@ -1,9 +1,9 @@
-const bcrypt = require('bcryptjs')
-const { send } = require('process');
-const User = require('../models/User');
-const {sendPasswordResetEmail} = require('../services/emailService');
-const crypto = require('crypto');
-const { use } = require('../routes/userRoutes');
+import bcrypt from 'bcryptjs'
+// import { send } from 'process';
+import User from '../models/User.js';
+import crypto from 'crypto';
+import userRoutes from "../routes/userRoutes.js";
+import sendPasswordResetEmail from '../services/emailService.js'
 
 const requestPasswordReset = async (req, res) => {
     const {email} = req.body;
@@ -54,7 +54,7 @@ const resetPassword = async (req, res) => {
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;
 
-        await use.save();
+        await userRoutes.save();
         res.status(200).json({message: 'Senha redefinida com sucesso'});
     } catch (error) {
         res.status(500).json({message: 'Erro ao redefinir a senha'});
@@ -62,4 +62,4 @@ const resetPassword = async (req, res) => {
 };
 
 
-module.exports = {requestPasswordReset};
+export default requestPasswordReset;
